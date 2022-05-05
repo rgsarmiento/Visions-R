@@ -14,5 +14,6 @@
             Logger.Registro("Registro", "form1-btn_guardar_Click")
         End If
 
+
     End Sub
 End Class
