@@ -1,0 +1,17 @@
+﻿Imports System.IO
+
+Public Class Logger
+
+    Public Shared Sub Registro(ByVal mensaje As String, clase As String)
+        If Deploy_parameters.modelo_configuraciones.app_settings.logger.status Then
+            Dim logger = Deploy_parameters.modelo_configuraciones.app_settings.logger.path
+            Using writer As StreamWriter = New StreamWriter(logger, True)
+                writer.WriteLine("")
+                writer.WriteLine($"{DateTime.Now } clase: ### {clase} ###")
+                writer.WriteLine($"> {mensaje}")
+            End Using
+        End If
+
+    End Sub
+
+End Class
