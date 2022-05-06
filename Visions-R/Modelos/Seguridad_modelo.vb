@@ -1,22 +1,22 @@
-﻿Public Class Modelo_Seguridad
+﻿Public Class Seguridad_modelo
     Public Sub New()
         Me._id = 0
-        Me._codigo = ""
+        Me._nombre_usuario = ""
         Me._clave = ""
-        Me._perfil = ""
-        Me._nombre = ""
-        Me._nit = ""
+        Me._estado = 0
+        Me._id_usuario = 0
+        Me._id_perfil = 0
     End Sub
 
 
 
 #Region "Declaraciones"
     Private _id As Integer
-    Private _codigo As String
+    Private _nombre_usuario As String
     Private _clave As String
-    Private _perfil As String
-    Private _nombre As String
-    Private _nit As String
+    Private _estado As Integer
+    Private _id_usuario As Integer
+    Private _id_perfil As Integer
 #End Region
 
 
@@ -30,12 +30,12 @@
         End Set
     End Property
 
-    Public Property Codigo As String
+    Public Property nombre_usuario As String
         Get
-            Return _codigo
+            Return _nombre_usuario
         End Get
         Set(value As String)
-            _codigo = value
+            _nombre_usuario = value
         End Set
     End Property
 
@@ -48,30 +48,30 @@
         End Set
     End Property
 
-    Public Property Perfil As String
+    Public Property estado As Integer
         Get
-            Return _perfil
+            Return _estado
         End Get
-        Set(value As String)
-            _perfil = value
+        Set(value As Integer)
+            _estado = value
         End Set
     End Property
 
-    Public Property Nombre As String
+    Public Property id_usuario As Integer
         Get
-            Return _nombre
+            Return _id_usuario
         End Get
-        Set(value As String)
-            _nombre = value
+        Set(value As Integer)
+            _id_usuario = value
         End Set
     End Property
 
-    Public Property Nit As String
+    Public Property id_perfil As Integer
         Get
-            Return _nit
+            Return _id_perfil
         End Get
-        Set(value As String)
-            _nit = value
+        Set(value As Integer)
+            _id_perfil = value
         End Set
     End Property
 #End Region
