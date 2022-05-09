@@ -6,6 +6,8 @@ Public Class Usuarios_cad
         Variables.conexion_acceso = Acceso_Tablas.Validar("usuarios")
     End Sub
 
+#Region "CRUD"
+
     Public Shared Function Guardar(ByVal e As Usuario_modelo) As Boolean
         Try
             Dim con As Conexion = New Conexion()
@@ -107,7 +109,6 @@ Public Class Usuarios_cad
         End Try
     End Function
 
-
     Public Shared Function Seleccionar(ByVal id As Integer) As DataTable
         Try
             Dim con As Conexion = New Conexion()
@@ -117,4 +118,45 @@ Public Class Usuarios_cad
         End Try
     End Function
 
+#End Region
+
+#Region "Listas de seleccion de Usuarios"
+
+    Public Shared Function Listar(tipo_usuario As String) As DataTable
+        Try
+
+            Select Case tipo_usuario
+                Case "u"
+                    tipo_usuario = "usuario_visions"
+                Case "c"
+                    tipo_usuario = "cliente"
+                Case "v"
+                    tipo_usuario = "vendedor"
+                Case "p"
+                    tipo_usuario = "proveedor"
+                Case "o"
+                    tipo_usuario = "otro"
+            End Select
+
+            Dim con As Conexion = New Conexion()
+            Dim dt As DataTable = New DataTable
+
+            Dim query As String = $"SELECT id, numero_identificacion + ' | ' + nombre_1 + ' ' + nombre_2 + ' ' + apellido_1 + ' ' + apellido_2 AS buscador
+                                     FROM  usuarios
+                                        WHERE (estado = 1) AND ({tipo_usuario} = 1)"
+
+            Dim comando As SqlCommand = New SqlCommand(query, con.conectar)
+
+            Dim dr As SqlDataReader = comando.ExecuteReader(CommandBehavior.CloseConnection)
+            dt.Load(dr)
+            con.desconectar()
+            Return dt
+
+        Catch ex As Exception
+            Logger.Registro("Usuarios_cad", "Listar", ex.ToString)
+            Return Nothing
+        End Try
+    End Function
+
+#End Region
 End Class

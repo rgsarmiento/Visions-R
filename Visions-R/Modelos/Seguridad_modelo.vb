@@ -21,7 +21,7 @@
 
 
 #Region "Esquema del modelo de datos"
-    Public Property Id As Integer
+    Public Property id As Integer
         Get
             Return _id
         End Get
@@ -39,7 +39,7 @@
         End Set
     End Property
 
-    Public Property Clave As String
+    Public Property clave As String
         Get
             Return _clave
         End Get

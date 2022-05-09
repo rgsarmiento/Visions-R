@@ -45,14 +45,14 @@ Partial Class Msgbox_frm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(530, 227)
+        Me.Panel1.Size = New System.Drawing.Size(530, 208)
         Me.Panel1.TabIndex = 0
         '
         'lb_mensaje
         '
         Me.lb_mensaje.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lb_mensaje.ForeColor = System.Drawing.Color.DimGray
-        Me.lb_mensaje.Location = New System.Drawing.Point(68, 62)
+        Me.lb_mensaje.Location = New System.Drawing.Point(68, 50)
         Me.lb_mensaje.Name = "lb_mensaje"
         Me.lb_mensaje.Size = New System.Drawing.Size(454, 111)
         Me.lb_mensaje.TabIndex = 3
@@ -61,7 +61,7 @@ Partial Class Msgbox_frm
         '
         'pb_estado
         '
-        Me.pb_estado.Location = New System.Drawing.Point(12, 93)
+        Me.pb_estado.Location = New System.Drawing.Point(12, 78)
         Me.pb_estado.Name = "pb_estado"
         Me.pb_estado.Size = New System.Drawing.Size(50, 50)
         Me.pb_estado.TabIndex = 2
@@ -74,7 +74,7 @@ Partial Class Msgbox_frm
         Me.btn_aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_aceptar.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btn_aceptar.ForeColor = System.Drawing.Color.White
-        Me.btn_aceptar.Location = New System.Drawing.Point(397, 184)
+        Me.btn_aceptar.Location = New System.Drawing.Point(397, 167)
         Me.btn_aceptar.Name = "btn_aceptar"
         Me.btn_aceptar.Size = New System.Drawing.Size(125, 35)
         Me.btn_aceptar.TabIndex = 1
@@ -89,12 +89,13 @@ Partial Class Msgbox_frm
         Me.panel_titulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.panel_titulo.Location = New System.Drawing.Point(0, 0)
         Me.panel_titulo.Name = "panel_titulo"
-        Me.panel_titulo.Size = New System.Drawing.Size(530, 50)
+        Me.panel_titulo.Size = New System.Drawing.Size(530, 42)
         Me.panel_titulo.TabIndex = 0
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 8)
+        Me.PictureBox1.Image = Global.Visions_R.My.Resources.Resources.message_preview_30px
+        Me.PictureBox1.Location = New System.Drawing.Point(6, 6)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(30, 30)
         Me.PictureBox1.TabIndex = 1
@@ -103,11 +104,11 @@ Partial Class Msgbox_frm
         'lb_titulo
         '
         Me.lb_titulo.AutoSize = True
-        Me.lb_titulo.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lb_titulo.Font = New System.Drawing.Font("Segoe UI", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lb_titulo.ForeColor = System.Drawing.Color.White
-        Me.lb_titulo.Location = New System.Drawing.Point(48, 13)
+        Me.lb_titulo.Location = New System.Drawing.Point(42, 9)
         Me.lb_titulo.Name = "lb_titulo"
-        Me.lb_titulo.Size = New System.Drawing.Size(67, 25)
+        Me.lb_titulo.Size = New System.Drawing.Size(63, 25)
         Me.lb_titulo.TabIndex = 0
         Me.lb_titulo.Text = "Label1"
         '
@@ -116,7 +117,7 @@ Partial Class Msgbox_frm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Tomato
-        Me.ClientSize = New System.Drawing.Size(534, 231)
+        Me.ClientSize = New System.Drawing.Size(534, 212)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Msgbox_frm"
         Me.Padding = New System.Windows.Forms.Padding(2)
