@@ -23,6 +23,9 @@ Partial Class Usuarios_frm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cbx_municipios = New System.Windows.Forms.ComboBox()
+        Me.cbx_departamentos = New System.Windows.Forms.ComboBox()
+        Me.cbx_paises = New System.Windows.Forms.ComboBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
@@ -61,9 +64,6 @@ Partial Class Usuarios_frm
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.cbx_paises = New System.Windows.Forms.ComboBox()
-        Me.ComboBox6 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.panel_procesos.SuspendLayout()
         Me.panel_titulo.SuspendLayout()
@@ -73,8 +73,8 @@ Partial Class Usuarios_frm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.ComboBox7)
-        Me.Panel1.Controls.Add(Me.ComboBox6)
+        Me.Panel1.Controls.Add(Me.cbx_municipios)
+        Me.Panel1.Controls.Add(Me.cbx_departamentos)
         Me.Panel1.Controls.Add(Me.cbx_paises)
         Me.Panel1.Controls.Add(Me.Label15)
         Me.Panel1.Controls.Add(Me.TextBox6)
@@ -115,6 +115,39 @@ Partial Class Usuarios_frm
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1089, 475)
         Me.Panel1.TabIndex = 0
+        '
+        'cbx_municipios
+        '
+        Me.cbx_municipios.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbx_municipios.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbx_municipios.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cbx_municipios.FormattingEnabled = True
+        Me.cbx_municipios.Location = New System.Drawing.Point(683, 372)
+        Me.cbx_municipios.Name = "cbx_municipios"
+        Me.cbx_municipios.Size = New System.Drawing.Size(383, 29)
+        Me.cbx_municipios.TabIndex = 44
+        '
+        'cbx_departamentos
+        '
+        Me.cbx_departamentos.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbx_departamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbx_departamentos.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cbx_departamentos.FormattingEnabled = True
+        Me.cbx_departamentos.Location = New System.Drawing.Point(365, 372)
+        Me.cbx_departamentos.Name = "cbx_departamentos"
+        Me.cbx_departamentos.Size = New System.Drawing.Size(292, 29)
+        Me.cbx_departamentos.TabIndex = 43
+        '
+        'cbx_paises
+        '
+        Me.cbx_paises.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbx_paises.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbx_paises.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cbx_paises.FormattingEnabled = True
+        Me.cbx_paises.Location = New System.Drawing.Point(133, 372)
+        Me.cbx_paises.Name = "cbx_paises"
+        Me.cbx_paises.Size = New System.Drawing.Size(212, 29)
+        Me.cbx_paises.TabIndex = 42
         '
         'Label15
         '
@@ -570,39 +603,6 @@ Partial Class Usuarios_frm
         Me.Label14.TabIndex = 38
         Me.Label14.Text = "Dv"
         '
-        'cbx_paises
-        '
-        Me.cbx_paises.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.cbx_paises.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbx_paises.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.cbx_paises.FormattingEnabled = True
-        Me.cbx_paises.Location = New System.Drawing.Point(133, 372)
-        Me.cbx_paises.Name = "cbx_paises"
-        Me.cbx_paises.Size = New System.Drawing.Size(212, 29)
-        Me.cbx_paises.TabIndex = 42
-        '
-        'ComboBox6
-        '
-        Me.ComboBox6.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ComboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Location = New System.Drawing.Point(365, 372)
-        Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(292, 29)
-        Me.ComboBox6.TabIndex = 43
-        '
-        'ComboBox7
-        '
-        Me.ComboBox7.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ComboBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox7.FormattingEnabled = True
-        Me.ComboBox7.Location = New System.Drawing.Point(683, 372)
-        Me.ComboBox7.Name = "ComboBox7"
-        Me.ComboBox7.Size = New System.Drawing.Size(383, 29)
-        Me.ComboBox7.TabIndex = 44
-        '
         'Usuarios_frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -662,7 +662,7 @@ Partial Class Usuarios_frm
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents ComboBox7 As ComboBox
-    Friend WithEvents ComboBox6 As ComboBox
+    Friend WithEvents cbx_municipios As ComboBox
+    Friend WithEvents cbx_departamentos As ComboBox
     Friend WithEvents cbx_paises As ComboBox
 End Class

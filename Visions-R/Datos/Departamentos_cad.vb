@@ -23,7 +23,7 @@ Public Class Departamentos_cad
 
             Dim fila As DataRow = dt.NewRow()
             fila("id") = 0
-            fila("nombre") = "Selccione un departamento ►"
+            fila("nombre") = "Selccione un departamento ▼"
             dt.Rows.InsertAt(fila, 0)
             Return dt
 

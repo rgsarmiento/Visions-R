@@ -20,10 +20,10 @@ Public Class Paises_cad
             dt.Load(dr)
             con.desconectar()
 
-            'Dim fila As DataRow = dt.NewRow()
-            'fila("id") = 0
-            'fila("nombre") = "Selccione un pais ►"
-            'dt.Rows.InsertAt(fila, 0)
+            Dim fila As DataRow = dt.NewRow()
+            fila("id") = 0
+            fila("nombre") = "Selccione un pais ▼"
+            dt.Rows.InsertAt(fila, 0)
             Return dt
 
         Catch ex As Exception

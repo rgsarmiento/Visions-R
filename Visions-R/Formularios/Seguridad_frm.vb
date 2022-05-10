@@ -166,6 +166,13 @@ Public Class Seguridad_frm
             Return False
         End If
 
+        If cb_perfil.SelectedValue <= 0 Then
+            mensaje = "☠ El perfil es requerido"
+            ErrorProvider1.SetError(cb_perfil, mensaje)
+            proceso_estado("error", mensaje)
+            Return False
+        End If
+
         Return True
     End Function
 

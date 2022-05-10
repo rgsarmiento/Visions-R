@@ -21,6 +21,11 @@ Public Class Perfiles_cad
             Dim dr As SqlDataReader = comando.ExecuteReader(CommandBehavior.CloseConnection)
             dt.Load(dr)
             con.desconectar()
+
+            Dim fila As DataRow = dt.NewRow()
+            fila("id") = 0
+            fila("nombre") = "Selccione un perfil ▼"
+            dt.Rows.InsertAt(fila, 0)
             Return dt
 
         Catch ex As Exception

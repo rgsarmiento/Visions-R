@@ -23,7 +23,7 @@ Public Class Municipios_cad
 
             Dim fila As DataRow = dt.NewRow()
             fila("id") = 0
-            fila("nombre") = "Selccione una ciudad ►"
+            fila("nombre") = "Selccione una ciudad ▼"
             dt.Rows.InsertAt(fila, 0)
             Return dt
 
