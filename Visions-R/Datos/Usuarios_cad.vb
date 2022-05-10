@@ -51,8 +51,18 @@ Public Class Usuarios_cad
                 Return False
             End If
 
-        Catch ex As Exception
+        Catch ex As SqlException
             Logger.Registro("Usuarios_cad", "Guardar", ex.ToString)
+            Dim Msgbox_frm As New Msgbox_frm
+
+            For Each err As SqlError In ex.Errors                '
+                If err.Number = 2627 Then 'Infracción de la restricción "%.ls". No se puede insertar una fila de clave duplicada en el objeto '%. ls'.
+                    Msgbox_frm.abrir_frm("error", "Error al guardar usuario", $"El numero de documento y el correo electronico son valores unicos")
+                    Return False
+                    Exit For
+                End If
+            Next
+            Msgbox_frm.abrir_frm("error", "Error al guardar usuario", ex.Message)
             Return False
         End Try
     End Function
