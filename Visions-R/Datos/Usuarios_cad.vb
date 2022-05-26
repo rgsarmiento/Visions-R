@@ -35,11 +35,11 @@ Public Class Usuarios_cad
             comando.Parameters.AddWithValue("@id_departamento", e.Id_departamento)
             comando.Parameters.AddWithValue("@id_municipio", e.Id_municipio)
             comando.Parameters.AddWithValue("@correo", e.Correo)
-            comando.Parameters.AddWithValue("@cliente", e.Cliente)
-            comando.Parameters.AddWithValue("@vendedor", e.Vendedor)
-            comando.Parameters.AddWithValue("@proveedor", e.Proveedor)
-            comando.Parameters.AddWithValue("@usuario_visions", e.Usuario_visions)
-            comando.Parameters.AddWithValue("@otro", e.Otro)
+            comando.Parameters.AddWithValue("@cliente", Math.Abs(e.Cliente))
+            comando.Parameters.AddWithValue("@vendedor", Math.Abs(e.Vendedor))
+            comando.Parameters.AddWithValue("@proveedor", Math.Abs(e.Proveedor))
+            comando.Parameters.AddWithValue("@usuario_visions", Math.Abs(e.Usuario_visions))
+            comando.Parameters.AddWithValue("@otro", Math.Abs(e.Otro))
 
             Dim cantidad As Integer = comando.ExecuteNonQuery
 
@@ -96,12 +96,12 @@ Public Class Usuarios_cad
             comando.Parameters.AddWithValue("@id_departamento", e.Id_departamento)
             comando.Parameters.AddWithValue("@id_municipio", e.Id_municipio)
             comando.Parameters.AddWithValue("@correo", e.Correo)
-            comando.Parameters.AddWithValue("@cliente", e.Cliente)
-            comando.Parameters.AddWithValue("@vendedor", e.Vendedor)
-            comando.Parameters.AddWithValue("@proveedor", e.Proveedor)
-            comando.Parameters.AddWithValue("@usuario_visions", e.Usuario_visions)
-            comando.Parameters.AddWithValue("@otro", e.Otro)
-            comando.Parameters.AddWithValue("@estado", e.Estado)
+            comando.Parameters.AddWithValue("@cliente", Math.Abs(e.Cliente))
+            comando.Parameters.AddWithValue("@vendedor", Math.Abs(e.Vendedor))
+            comando.Parameters.AddWithValue("@proveedor", Math.Abs(e.Proveedor))
+            comando.Parameters.AddWithValue("@usuario_visions", Math.Abs(e.Usuario_visions))
+            comando.Parameters.AddWithValue("@otro", Math.Abs(e.Otro))
+            comando.Parameters.AddWithValue("@estado", Math.Abs(e.Estado))
 
             Dim cantidad As Integer = comando.ExecuteNonQuery
 
@@ -119,16 +119,60 @@ Public Class Usuarios_cad
         End Try
     End Function
 
-    Public Shared Function Seleccionar(ByVal id As Integer) As DataTable
+#End Region
+
+    Public Shared Function Seleccionar(id As Integer) As Usuario_modelo
+
+        Dim con As Conexion = New Conexion()
+        Dim dt As DataTable = New DataTable
+
+        Dim query As String = $"SELECT * FROM usuarios WHERE (id = {id})"
+
         Try
-            Dim con As Conexion = New Conexion()
-            Dim query As String = ""
+            Dim comando As SqlCommand = New SqlCommand(query, con.conectar)
+
+            Dim dr As SqlDataReader = comando.ExecuteReader(CommandBehavior.CloseConnection)
+            dt.Load(dr)
+            con.desconectar()
+
+            If dt.Rows.Count > 0 Then
+                Dim objeto As Usuario_modelo = New Usuario_modelo()
+
+                objeto.Id = dt.Rows(0)("id").ToString
+                objeto.Apellido_1 = dt.Rows(0)("apellido_1").ToString
+                objeto.Apellido_2 = dt.Rows(0)("apellido_2").ToString
+                objeto.Cliente = dt.Rows(0)("cliente").ToString
+                objeto.Correo = dt.Rows(0)("correo").ToString
+                objeto.Direccion = dt.Rows(0)("direccion").ToString
+                objeto.Dv = dt.Rows(0)("dv").ToString
+                objeto.Id_departamento = dt.Rows(0)("id_departamento").ToString
+                objeto.Id_municipio = dt.Rows(0)("id_municipio").ToString
+                objeto.Id_pais = dt.Rows(0)("id_pais").ToString
+                objeto.Id_tipo_documento_identificacion = dt.Rows(0)("id_tipo_documento_identificacion").ToString
+                objeto.Id_tipo_organizacion = dt.Rows(0)("id_tipo_organizacion").ToString
+                objeto.Id_tipo_regimen = dt.Rows(0)("id_tipo_regimen").ToString
+                objeto.Id_tipo_responsabilidad = dt.Rows(0)("id_tipo_responsabilidad").ToString
+                objeto.Nombre_1 = dt.Rows(0)("nombre_1").ToString
+                objeto.Nombre_2 = dt.Rows(0)("nombre_2").ToString
+                objeto.Numero_identificacion = dt.Rows(0)("numero_identificacion").ToString
+                objeto.Otro = dt.Rows(0)("otro").ToString
+                objeto.Proveedor = dt.Rows(0)("proveedor").ToString
+                objeto.Telefono = dt.Rows(0)("telefono").ToString
+                objeto.Usuario_visions = dt.Rows(0)("usuario_visions").ToString
+                objeto.Vendedor = dt.Rows(0)("vendedor").ToString
+                objeto.Estado = dt.Rows(0)("estado").ToString
+
+                Return objeto
+            Else
+                Return Nothing
+            End If
         Catch ex As Exception
             Logger.Registro("Usuarios_cad", "Seleccionar", ex.ToString)
+            Return Nothing
         End Try
+
     End Function
 
-#End Region
 
 #Region "Listas de seleccion de Usuarios"
 
@@ -146,14 +190,27 @@ Public Class Usuarios_cad
                     tipo_usuario = "proveedor"
                 Case "o"
                     tipo_usuario = "otro"
+                Case Else
+                    tipo_usuario = "todos"
             End Select
 
             Dim con As Conexion = New Conexion()
             Dim dt As DataTable = New DataTable
 
-            Dim query As String = $"SELECT id, numero_identificacion + ' | ' + nombre_1 + ' ' + nombre_2 + ' ' + apellido_1 + ' ' + apellido_2 AS buscador
-                                     FROM  usuarios
-                                        WHERE (estado = 1) AND ({tipo_usuario} = 1)"
+            Dim query As String = ""
+
+            If tipo_usuario = "todos" Then
+                query = "SELECT id, numero_identificacion + ' | ' + nombre_1 + ' ' + nombre_2 + ' ' + apellido_1 + ' ' + apellido_2 AS nombre, 
+                                    numero_identificacion + ' ' + nombre_1 + ' ' + nombre_2 + ' ' + apellido_1 + ' ' + apellido_2 + ' ' + correo + ' ' + telefono + ' ' + direccion AS buscador
+                                    FROM usuarios"
+
+            Else
+                query = $"SELECT id, numero_identificacion + ' | ' + nombre_1 + ' ' + nombre_2 + ' ' + apellido_1 + ' ' + apellido_2 AS nombre, 
+                                    numero_identificacion + ' ' + nombre_1 + ' ' + nombre_2 + ' ' + apellido_1 + ' ' + apellido_2 + ' ' + correo + ' ' + telefono + ' ' + direccion AS buscador
+                                    FROM usuarios
+                                    WHERE (estado = 1) AND ({tipo_usuario} = 1)"
+            End If
+
 
             Dim comando As SqlCommand = New SqlCommand(query, con.conectar)
 

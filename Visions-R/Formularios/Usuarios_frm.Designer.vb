@@ -22,23 +22,33 @@ Partial Class Usuarios_frm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txt_numero_documento = New System.Windows.Forms.TextBox()
+        Me.lb_seleccionar_usuarios = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.lbx_usuarios = New System.Windows.Forms.ListBox()
+        Me.cb_usuarios = New System.Windows.Forms.TextBox()
+        Me.btn_actualizar = New System.Windows.Forms.Button()
+        Me.btn_nuevo = New System.Windows.Forms.Button()
+        Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.check_activo = New System.Windows.Forms.CheckBox()
         Me.cbx_municipios = New System.Windows.Forms.ComboBox()
         Me.cbx_departamentos = New System.Windows.Forms.ComboBox()
         Me.cbx_paises = New System.Windows.Forms.ComboBox()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.txt_clave_acceso = New System.Windows.Forms.TextBox()
+        Me.txt_telefono = New System.Windows.Forms.TextBox()
+        Me.txt_email = New System.Windows.Forms.TextBox()
+        Me.txt_direccion = New System.Windows.Forms.TextBox()
+        Me.txt_segundo_apellido = New System.Windows.Forms.TextBox()
+        Me.txt_primer_apellido = New System.Windows.Forms.TextBox()
+        Me.txt_segundo_nombre = New System.Windows.Forms.TextBox()
+        Me.txt_primer_nombre = New System.Windows.Forms.TextBox()
+        Me.cbx_tipo_responsabilidad = New System.Windows.Forms.ComboBox()
+        Me.cbx_tipo_regimen = New System.Windows.Forms.ComboBox()
+        Me.cbx_tipo_organizacion = New System.Windows.Forms.ComboBox()
+        Me.cbx_tipo_documento = New System.Windows.Forms.ComboBox()
+        Me.txt_dv = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -46,12 +56,11 @@ Partial Class Usuarios_frm
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cb_perfil = New System.Windows.Forms.ComboBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.check_activo = New System.Windows.Forms.CheckBox()
+        Me.check_otro = New System.Windows.Forms.CheckBox()
+        Me.check_vendedor = New System.Windows.Forms.CheckBox()
+        Me.check_usuario_programa = New System.Windows.Forms.CheckBox()
+        Me.check_proveedor = New System.Windows.Forms.CheckBox()
+        Me.check_cliente = New System.Windows.Forms.CheckBox()
         Me.panel_procesos = New System.Windows.Forms.Panel()
         Me.lb_proceso = New System.Windows.Forms.Label()
         Me.panel_titulo = New System.Windows.Forms.Panel()
@@ -64,31 +73,42 @@ Partial Class Usuarios_frm
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1.SuspendLayout()
         Me.panel_procesos.SuspendLayout()
         Me.panel_titulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.txt_numero_documento)
+        Me.Panel1.Controls.Add(Me.lb_seleccionar_usuarios)
+        Me.Panel1.Controls.Add(Me.Label16)
+        Me.Panel1.Controls.Add(Me.lbx_usuarios)
+        Me.Panel1.Controls.Add(Me.cb_usuarios)
+        Me.Panel1.Controls.Add(Me.btn_actualizar)
+        Me.Panel1.Controls.Add(Me.btn_nuevo)
+        Me.Panel1.Controls.Add(Me.btn_guardar)
+        Me.Panel1.Controls.Add(Me.check_activo)
         Me.Panel1.Controls.Add(Me.cbx_municipios)
         Me.Panel1.Controls.Add(Me.cbx_departamentos)
         Me.Panel1.Controls.Add(Me.cbx_paises)
         Me.Panel1.Controls.Add(Me.Label15)
-        Me.Panel1.Controls.Add(Me.TextBox6)
-        Me.Panel1.Controls.Add(Me.TextBox7)
-        Me.Panel1.Controls.Add(Me.TextBox5)
-        Me.Panel1.Controls.Add(Me.TextBox4)
-        Me.Panel1.Controls.Add(Me.TextBox3)
-        Me.Panel1.Controls.Add(Me.TextBox2)
-        Me.Panel1.Controls.Add(Me.TextBox1)
-        Me.Panel1.Controls.Add(Me.ComboBox4)
-        Me.Panel1.Controls.Add(Me.ComboBox3)
-        Me.Panel1.Controls.Add(Me.ComboBox2)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
-        Me.Panel1.Controls.Add(Me.txt_clave_acceso)
+        Me.Panel1.Controls.Add(Me.txt_telefono)
+        Me.Panel1.Controls.Add(Me.txt_email)
+        Me.Panel1.Controls.Add(Me.txt_direccion)
+        Me.Panel1.Controls.Add(Me.txt_segundo_apellido)
+        Me.Panel1.Controls.Add(Me.txt_primer_apellido)
+        Me.Panel1.Controls.Add(Me.txt_segundo_nombre)
+        Me.Panel1.Controls.Add(Me.txt_primer_nombre)
+        Me.Panel1.Controls.Add(Me.cbx_tipo_responsabilidad)
+        Me.Panel1.Controls.Add(Me.cbx_tipo_regimen)
+        Me.Panel1.Controls.Add(Me.cbx_tipo_organizacion)
+        Me.Panel1.Controls.Add(Me.cbx_tipo_documento)
+        Me.Panel1.Controls.Add(Me.txt_dv)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.Label7)
@@ -96,12 +116,11 @@ Partial Class Usuarios_frm
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.cb_perfil)
-        Me.Panel1.Controls.Add(Me.CheckBox4)
-        Me.Panel1.Controls.Add(Me.CheckBox3)
-        Me.Panel1.Controls.Add(Me.CheckBox2)
-        Me.Panel1.Controls.Add(Me.CheckBox1)
-        Me.Panel1.Controls.Add(Me.check_activo)
+        Me.Panel1.Controls.Add(Me.check_otro)
+        Me.Panel1.Controls.Add(Me.check_vendedor)
+        Me.Panel1.Controls.Add(Me.check_usuario_programa)
+        Me.Panel1.Controls.Add(Me.check_proveedor)
+        Me.Panel1.Controls.Add(Me.check_cliente)
         Me.Panel1.Controls.Add(Me.panel_procesos)
         Me.Panel1.Controls.Add(Me.panel_titulo)
         Me.Panel1.Controls.Add(Me.Label13)
@@ -113,8 +132,130 @@ Partial Class Usuarios_frm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1089, 475)
+        Me.Panel1.Size = New System.Drawing.Size(1089, 515)
         Me.Panel1.TabIndex = 0
+        '
+        'txt_numero_documento
+        '
+        Me.txt_numero_documento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_numero_documento.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_numero_documento.Location = New System.Drawing.Point(11, 171)
+        Me.txt_numero_documento.Name = "txt_numero_documento"
+        Me.txt_numero_documento.Size = New System.Drawing.Size(212, 29)
+        Me.txt_numero_documento.TabIndex = 7
+        '
+        'lb_seleccionar_usuarios
+        '
+        Me.lb_seleccionar_usuarios.AutoSize = True
+        Me.lb_seleccionar_usuarios.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lb_seleccionar_usuarios.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lb_seleccionar_usuarios.ForeColor = System.Drawing.Color.CadetBlue
+        Me.lb_seleccionar_usuarios.Location = New System.Drawing.Point(1041, 91)
+        Me.lb_seleccionar_usuarios.Name = "lb_seleccionar_usuarios"
+        Me.lb_seleccionar_usuarios.Size = New System.Drawing.Size(21, 19)
+        Me.lb_seleccionar_usuarios.TabIndex = 50
+        Me.lb_seleccionar_usuarios.Text = "▼"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.BackColor = System.Drawing.Color.Transparent
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.Label16.Location = New System.Drawing.Point(521, 91)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(56, 21)
+        Me.Label16.TabIndex = 49
+        Me.Label16.Text = "Buscar"
+        '
+        'lbx_usuarios
+        '
+        Me.lbx_usuarios.BackColor = System.Drawing.Color.Lavender
+        Me.lbx_usuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbx_usuarios.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lbx_usuarios.FormattingEnabled = True
+        Me.lbx_usuarios.ItemHeight = 21
+        Me.lbx_usuarios.Location = New System.Drawing.Point(580, 116)
+        Me.lbx_usuarios.Name = "lbx_usuarios"
+        Me.lbx_usuarios.Size = New System.Drawing.Size(486, 86)
+        Me.lbx_usuarios.TabIndex = 48
+        Me.lbx_usuarios.Visible = False
+        '
+        'cb_usuarios
+        '
+        Me.cb_usuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cb_usuarios.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cb_usuarios.Location = New System.Drawing.Point(580, 87)
+        Me.cb_usuarios.Name = "cb_usuarios"
+        Me.cb_usuarios.Size = New System.Drawing.Size(486, 29)
+        Me.cb_usuarios.TabIndex = 47
+        '
+        'btn_actualizar
+        '
+        Me.btn_actualizar.FlatAppearance.BorderColor = System.Drawing.Color.MediumSpringGreen
+        Me.btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_actualizar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_actualizar.ForeColor = System.Drawing.Color.MediumSpringGreen
+        Me.btn_actualizar.Image = Global.Visions_R.My.Resources.Resources.update_30px
+        Me.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_actualizar.Location = New System.Drawing.Point(683, 434)
+        Me.btn_actualizar.Name = "btn_actualizar"
+        Me.btn_actualizar.Size = New System.Drawing.Size(122, 39)
+        Me.btn_actualizar.TabIndex = 24
+        Me.btn_actualizar.Text = "Actualizar"
+        Me.btn_actualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btn_actualizar.UseVisualStyleBackColor = True
+        Me.btn_actualizar.Visible = False
+        '
+        'btn_nuevo
+        '
+        Me.btn_nuevo.FlatAppearance.BorderColor = System.Drawing.Color.Gold
+        Me.btn_nuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_nuevo.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_nuevo.ForeColor = System.Drawing.Color.Gold
+        Me.btn_nuevo.Image = Global.Visions_R.My.Resources.Resources.broom_30px
+        Me.btn_nuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_nuevo.Location = New System.Drawing.Point(816, 434)
+        Me.btn_nuevo.Name = "btn_nuevo"
+        Me.btn_nuevo.Size = New System.Drawing.Size(122, 39)
+        Me.btn_nuevo.TabIndex = 23
+        Me.btn_nuevo.Text = "Nuevo"
+        Me.btn_nuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btn_nuevo.UseVisualStyleBackColor = True
+        '
+        'btn_guardar
+        '
+        Me.btn_guardar.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue
+        Me.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_guardar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_guardar.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.btn_guardar.Image = Global.Visions_R.My.Resources.Resources.save_30px
+        Me.btn_guardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_guardar.Location = New System.Drawing.Point(944, 434)
+        Me.btn_guardar.Name = "btn_guardar"
+        Me.btn_guardar.Size = New System.Drawing.Size(122, 39)
+        Me.btn_guardar.TabIndex = 22
+        Me.btn_guardar.Text = "Guardar"
+        Me.btn_guardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btn_guardar.UseVisualStyleBackColor = True
+        '
+        'check_activo
+        '
+        Me.check_activo.AutoSize = True
+        Me.check_activo.Checked = True
+        Me.check_activo.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.check_activo.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_activo.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_activo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
+        Me.check_activo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.check_activo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.check_activo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.check_activo.Location = New System.Drawing.Point(133, 419)
+        Me.check_activo.Name = "check_activo"
+        Me.check_activo.Size = New System.Drawing.Size(125, 25)
+        Me.check_activo.TabIndex = 46
+        Me.check_activo.Text = "Usuario activo"
+        Me.check_activo.UseVisualStyleBackColor = True
         '
         'cbx_municipios
         '
@@ -125,7 +266,7 @@ Partial Class Usuarios_frm
         Me.cbx_municipios.Location = New System.Drawing.Point(683, 372)
         Me.cbx_municipios.Name = "cbx_municipios"
         Me.cbx_municipios.Size = New System.Drawing.Size(383, 29)
-        Me.cbx_municipios.TabIndex = 44
+        Me.cbx_municipios.TabIndex = 21
         '
         'cbx_departamentos
         '
@@ -136,7 +277,7 @@ Partial Class Usuarios_frm
         Me.cbx_departamentos.Location = New System.Drawing.Point(365, 372)
         Me.cbx_departamentos.Name = "cbx_departamentos"
         Me.cbx_departamentos.Size = New System.Drawing.Size(292, 29)
-        Me.cbx_departamentos.TabIndex = 43
+        Me.cbx_departamentos.TabIndex = 20
         '
         'cbx_paises
         '
@@ -147,7 +288,7 @@ Partial Class Usuarios_frm
         Me.cbx_paises.Location = New System.Drawing.Point(133, 372)
         Me.cbx_paises.Name = "cbx_paises"
         Me.cbx_paises.Size = New System.Drawing.Size(212, 29)
-        Me.cbx_paises.TabIndex = 42
+        Me.cbx_paises.TabIndex = 19
         '
         'Label15
         '
@@ -161,126 +302,126 @@ Partial Class Usuarios_frm
         Me.Label15.TabIndex = 41
         Me.Label15.Text = "Email"
         '
-        'TextBox6
+        'txt_telefono
         '
-        Me.TextBox6.BackColor = System.Drawing.Color.FloralWhite
-        Me.TextBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox6.Location = New System.Drawing.Point(683, 293)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(383, 29)
-        Me.TextBox6.TabIndex = 40
+        Me.txt_telefono.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_telefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_telefono.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_telefono.Location = New System.Drawing.Point(683, 293)
+        Me.txt_telefono.Name = "txt_telefono"
+        Me.txt_telefono.Size = New System.Drawing.Size(383, 29)
+        Me.txt_telefono.TabIndex = 17
         '
-        'TextBox7
+        'txt_email
         '
-        Me.TextBox7.BackColor = System.Drawing.Color.FloralWhite
-        Me.TextBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox7.Location = New System.Drawing.Point(133, 328)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(383, 29)
-        Me.TextBox7.TabIndex = 39
+        Me.txt_email.BackColor = System.Drawing.Color.White
+        Me.txt_email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_email.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_email.Location = New System.Drawing.Point(133, 328)
+        Me.txt_email.Name = "txt_email"
+        Me.txt_email.Size = New System.Drawing.Size(383, 29)
+        Me.txt_email.TabIndex = 18
         '
-        'TextBox5
+        'txt_direccion
         '
-        Me.TextBox5.BackColor = System.Drawing.Color.FloralWhite
-        Me.TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox5.Location = New System.Drawing.Point(133, 293)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(383, 29)
-        Me.TextBox5.TabIndex = 39
+        Me.txt_direccion.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_direccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_direccion.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_direccion.Location = New System.Drawing.Point(133, 293)
+        Me.txt_direccion.Name = "txt_direccion"
+        Me.txt_direccion.Size = New System.Drawing.Size(383, 29)
+        Me.txt_direccion.TabIndex = 16
         '
-        'TextBox4
+        'txt_segundo_apellido
         '
-        Me.TextBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox4.Location = New System.Drawing.Point(683, 258)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(383, 29)
-        Me.TextBox4.TabIndex = 37
+        Me.txt_segundo_apellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_segundo_apellido.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_segundo_apellido.Location = New System.Drawing.Point(683, 258)
+        Me.txt_segundo_apellido.Name = "txt_segundo_apellido"
+        Me.txt_segundo_apellido.Size = New System.Drawing.Size(383, 29)
+        Me.txt_segundo_apellido.TabIndex = 15
         '
-        'TextBox3
+        'txt_primer_apellido
         '
-        Me.TextBox3.BackColor = System.Drawing.Color.FloralWhite
-        Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox3.Location = New System.Drawing.Point(133, 258)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(383, 29)
-        Me.TextBox3.TabIndex = 36
+        Me.txt_primer_apellido.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_primer_apellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_primer_apellido.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_primer_apellido.Location = New System.Drawing.Point(133, 258)
+        Me.txt_primer_apellido.Name = "txt_primer_apellido"
+        Me.txt_primer_apellido.Size = New System.Drawing.Size(383, 29)
+        Me.txt_primer_apellido.TabIndex = 14
         '
-        'TextBox2
+        'txt_segundo_nombre
         '
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox2.Location = New System.Drawing.Point(683, 223)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(383, 29)
-        Me.TextBox2.TabIndex = 35
+        Me.txt_segundo_nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_segundo_nombre.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_segundo_nombre.Location = New System.Drawing.Point(683, 223)
+        Me.txt_segundo_nombre.Name = "txt_segundo_nombre"
+        Me.txt_segundo_nombre.Size = New System.Drawing.Size(383, 29)
+        Me.txt_segundo_nombre.TabIndex = 13
         '
-        'TextBox1
+        'txt_primer_nombre
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.FloralWhite
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox1.Location = New System.Drawing.Point(133, 223)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(383, 29)
-        Me.TextBox1.TabIndex = 12
+        Me.txt_primer_nombre.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_primer_nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_primer_nombre.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_primer_nombre.Location = New System.Drawing.Point(133, 223)
+        Me.txt_primer_nombre.Name = "txt_primer_nombre"
+        Me.txt_primer_nombre.Size = New System.Drawing.Size(383, 29)
+        Me.txt_primer_nombre.TabIndex = 12
         '
-        'ComboBox4
+        'cbx_tipo_responsabilidad
         '
-        Me.ComboBox4.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ComboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(786, 171)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(280, 29)
-        Me.ComboBox4.TabIndex = 11
+        Me.cbx_tipo_responsabilidad.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbx_tipo_responsabilidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbx_tipo_responsabilidad.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cbx_tipo_responsabilidad.FormattingEnabled = True
+        Me.cbx_tipo_responsabilidad.Location = New System.Drawing.Point(786, 171)
+        Me.cbx_tipo_responsabilidad.Name = "cbx_tipo_responsabilidad"
+        Me.cbx_tipo_responsabilidad.Size = New System.Drawing.Size(280, 29)
+        Me.cbx_tipo_responsabilidad.TabIndex = 11
         '
-        'ComboBox3
+        'cbx_tipo_regimen
         '
-        Me.ComboBox3.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ComboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(545, 172)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(212, 29)
-        Me.ComboBox3.TabIndex = 10
+        Me.cbx_tipo_regimen.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbx_tipo_regimen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbx_tipo_regimen.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cbx_tipo_regimen.FormattingEnabled = True
+        Me.cbx_tipo_regimen.Location = New System.Drawing.Point(545, 172)
+        Me.cbx_tipo_regimen.Name = "cbx_tipo_regimen"
+        Me.cbx_tipo_regimen.Size = New System.Drawing.Size(212, 29)
+        Me.cbx_tipo_regimen.TabIndex = 10
         '
-        'ComboBox2
+        'cbx_tipo_organizacion
         '
-        Me.ComboBox2.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(316, 172)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(200, 29)
-        Me.ComboBox2.TabIndex = 9
+        Me.cbx_tipo_organizacion.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbx_tipo_organizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbx_tipo_organizacion.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cbx_tipo_organizacion.FormattingEnabled = True
+        Me.cbx_tipo_organizacion.Location = New System.Drawing.Point(316, 172)
+        Me.cbx_tipo_organizacion.Name = "cbx_tipo_organizacion"
+        Me.cbx_tipo_organizacion.Size = New System.Drawing.Size(200, 29)
+        Me.cbx_tipo_organizacion.TabIndex = 9
         '
-        'ComboBox1
+        'cbx_tipo_documento
         '
-        Me.ComboBox1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(11, 111)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(212, 29)
-        Me.ComboBox1.TabIndex = 6
+        Me.cbx_tipo_documento.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbx_tipo_documento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbx_tipo_documento.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.cbx_tipo_documento.FormattingEnabled = True
+        Me.cbx_tipo_documento.Location = New System.Drawing.Point(11, 111)
+        Me.cbx_tipo_documento.Name = "cbx_tipo_documento"
+        Me.cbx_tipo_documento.Size = New System.Drawing.Size(212, 29)
+        Me.cbx_tipo_documento.TabIndex = 6
         '
-        'txt_clave_acceso
+        'txt_dv
         '
-        Me.txt_clave_acceso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txt_clave_acceso.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.txt_clave_acceso.Location = New System.Drawing.Point(251, 172)
-        Me.txt_clave_acceso.Name = "txt_clave_acceso"
-        Me.txt_clave_acceso.Size = New System.Drawing.Size(38, 29)
-        Me.txt_clave_acceso.TabIndex = 8
+        Me.txt_dv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txt_dv.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_dv.Location = New System.Drawing.Point(251, 172)
+        Me.txt_dv.Name = "txt_dv"
+        Me.txt_dv.Size = New System.Drawing.Size(38, 29)
+        Me.txt_dv.TabIndex = 8
         '
         'Label9
         '
@@ -366,96 +507,85 @@ Partial Class Usuarios_frm
         Me.Label1.TabIndex = 19
         Me.Label1.Text = "Primer nombre"
         '
-        'cb_perfil
+        'check_otro
         '
-        Me.cb_perfil.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.cb_perfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cb_perfil.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.cb_perfil.FormattingEnabled = True
-        Me.cb_perfil.Location = New System.Drawing.Point(11, 172)
-        Me.cb_perfil.Name = "cb_perfil"
-        Me.cb_perfil.Size = New System.Drawing.Size(212, 29)
-        Me.cb_perfil.TabIndex = 7
+        Me.check_otro.AutoSize = True
+        Me.check_otro.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_otro.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_otro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
+        Me.check_otro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.check_otro.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.check_otro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.check_otro.Location = New System.Drawing.Point(545, 47)
+        Me.check_otro.Name = "check_otro"
+        Me.check_otro.Size = New System.Drawing.Size(58, 25)
+        Me.check_otro.TabIndex = 5
+        Me.check_otro.Text = "Otro"
+        Me.check_otro.UseVisualStyleBackColor = True
         '
-        'CheckBox4
+        'check_vendedor
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox4.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
-        Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.CheckBox4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.CheckBox4.Location = New System.Drawing.Point(545, 47)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(58, 25)
-        Me.CheckBox4.TabIndex = 5
-        Me.CheckBox4.Text = "Otro"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.check_vendedor.AutoSize = True
+        Me.check_vendedor.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_vendedor.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_vendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
+        Me.check_vendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.check_vendedor.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.check_vendedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.check_vendedor.Location = New System.Drawing.Point(431, 47)
+        Me.check_vendedor.Name = "check_vendedor"
+        Me.check_vendedor.Size = New System.Drawing.Size(93, 25)
+        Me.check_vendedor.TabIndex = 4
+        Me.check_vendedor.Text = "Vendedor"
+        Me.check_vendedor.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'check_usuario_programa
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox3.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
-        Me.CheckBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.CheckBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.CheckBox3.Location = New System.Drawing.Point(431, 47)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(93, 25)
-        Me.CheckBox3.TabIndex = 4
-        Me.CheckBox3.Text = "Vendedor"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.check_usuario_programa.AutoSize = True
+        Me.check_usuario_programa.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_usuario_programa.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_usuario_programa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
+        Me.check_usuario_programa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.check_usuario_programa.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.check_usuario_programa.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.check_usuario_programa.Location = New System.Drawing.Point(108, 47)
+        Me.check_usuario_programa.Name = "check_usuario_programa"
+        Me.check_usuario_programa.Size = New System.Drawing.Size(178, 25)
+        Me.check_usuario_programa.TabIndex = 2
+        Me.check_usuario_programa.Text = "Usuario del programa"
+        Me.check_usuario_programa.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'check_proveedor
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox2.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
-        Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.CheckBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.CheckBox2.Location = New System.Drawing.Point(108, 47)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(178, 25)
-        Me.CheckBox2.TabIndex = 2
-        Me.CheckBox2.Text = "Usuario del programa"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.check_proveedor.AutoSize = True
+        Me.check_proveedor.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_proveedor.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_proveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
+        Me.check_proveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.check_proveedor.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.check_proveedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.check_proveedor.Location = New System.Drawing.Point(309, 47)
+        Me.check_proveedor.Name = "check_proveedor"
+        Me.check_proveedor.Size = New System.Drawing.Size(98, 25)
+        Me.check_proveedor.TabIndex = 3
+        Me.check_proveedor.Text = "Proveedor"
+        Me.check_proveedor.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'check_cliente
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox1.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.CheckBox1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
-        Me.CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.CheckBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.CheckBox1.Location = New System.Drawing.Point(309, 47)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(98, 25)
-        Me.CheckBox1.TabIndex = 3
-        Me.CheckBox1.Text = "Proveedor"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'check_activo
-        '
-        Me.check_activo.AutoSize = True
-        Me.check_activo.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
-        Me.check_activo.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
-        Me.check_activo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
-        Me.check_activo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.check_activo.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.check_activo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.check_activo.Location = New System.Drawing.Point(16, 47)
-        Me.check_activo.Name = "check_activo"
-        Me.check_activo.Size = New System.Drawing.Size(74, 25)
-        Me.check_activo.TabIndex = 1
-        Me.check_activo.Text = "Cliente"
-        Me.check_activo.UseVisualStyleBackColor = True
+        Me.check_cliente.AutoSize = True
+        Me.check_cliente.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_cliente.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen
+        Me.check_cliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow
+        Me.check_cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.check_cliente.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.check_cliente.ForeColor = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.check_cliente.Location = New System.Drawing.Point(16, 47)
+        Me.check_cliente.Name = "check_cliente"
+        Me.check_cliente.Size = New System.Drawing.Size(74, 25)
+        Me.check_cliente.TabIndex = 1
+        Me.check_cliente.Text = "Cliente"
+        Me.check_cliente.UseVisualStyleBackColor = True
         '
         'panel_procesos
         '
@@ -463,7 +593,7 @@ Partial Class Usuarios_frm
         Me.panel_procesos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panel_procesos.Controls.Add(Me.lb_proceso)
         Me.panel_procesos.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panel_procesos.Location = New System.Drawing.Point(0, 450)
+        Me.panel_procesos.Location = New System.Drawing.Point(0, 490)
         Me.panel_procesos.Name = "panel_procesos"
         Me.panel_procesos.Size = New System.Drawing.Size(1089, 25)
         Me.panel_procesos.TabIndex = 5
@@ -482,7 +612,7 @@ Partial Class Usuarios_frm
         '
         'panel_titulo
         '
-        Me.panel_titulo.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.panel_titulo.BackColor = System.Drawing.Color.DarkSeaGreen
         Me.panel_titulo.Controls.Add(Me.btn_cerrar)
         Me.panel_titulo.Controls.Add(Me.Label2)
         Me.panel_titulo.Controls.Add(Me.PictureBox1)
@@ -500,10 +630,10 @@ Partial Class Usuarios_frm
         Me.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_cerrar.Font = New System.Drawing.Font("Segoe UI Symbol", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btn_cerrar.ForeColor = System.Drawing.Color.White
-        Me.btn_cerrar.Location = New System.Drawing.Point(981, 2)
+        Me.btn_cerrar.Location = New System.Drawing.Point(1040, 2)
         Me.btn_cerrar.Name = "btn_cerrar"
         Me.btn_cerrar.Size = New System.Drawing.Size(46, 35)
-        Me.btn_cerrar.TabIndex = 10
+        Me.btn_cerrar.TabIndex = 100
         Me.btn_cerrar.TabStop = False
         Me.btn_cerrar.Text = "X"
         Me.btn_cerrar.UseVisualStyleBackColor = True
@@ -514,11 +644,11 @@ Partial Class Usuarios_frm
         Me.Label2.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(41, 10)
+        Me.Label2.Location = New System.Drawing.Point(41, 8)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(85, 25)
+        Me.Label2.Size = New System.Drawing.Size(204, 25)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Usuarios"
+        Me.Label2.Text = "Usuarios del programa"
         '
         'PictureBox1
         '
@@ -603,15 +733,20 @@ Partial Class Usuarios_frm
         Me.Label14.TabIndex = 38
         Me.Label14.Text = "Dv"
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'Usuarios_frm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.MediumSeaGreen
-        Me.ClientSize = New System.Drawing.Size(1093, 479)
+        Me.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.ClientSize = New System.Drawing.Size(1093, 519)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Usuarios_frm"
         Me.Padding = New System.Windows.Forms.Padding(2)
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Usuarios"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -619,6 +754,7 @@ Partial Class Usuarios_frm
         Me.panel_titulo.ResumeLayout(False)
         Me.panel_titulo.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -630,12 +766,11 @@ Partial Class Usuarios_frm
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents panel_procesos As Panel
     Friend WithEvents lb_proceso As Label
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents check_activo As CheckBox
-    Friend WithEvents cb_perfil As ComboBox
+    Friend WithEvents check_otro As CheckBox
+    Friend WithEvents check_vendedor As CheckBox
+    Friend WithEvents check_usuario_programa As CheckBox
+    Friend WithEvents check_proveedor As CheckBox
+    Friend WithEvents check_cliente As CheckBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
@@ -644,25 +779,35 @@ Partial Class Usuarios_frm
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_segundo_apellido As TextBox
+    Friend WithEvents txt_primer_apellido As TextBox
+    Friend WithEvents txt_segundo_nombre As TextBox
+    Friend WithEvents txt_primer_nombre As TextBox
     Friend WithEvents Label13 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents ComboBox4 As ComboBox
-    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents cbx_tipo_responsabilidad As ComboBox
+    Friend WithEvents cbx_tipo_regimen As ComboBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents txt_clave_acceso As TextBox
+    Friend WithEvents cbx_tipo_organizacion As ComboBox
+    Friend WithEvents cbx_tipo_documento As ComboBox
+    Friend WithEvents txt_dv As TextBox
     Friend WithEvents Label15 As Label
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents txt_telefono As TextBox
+    Friend WithEvents txt_email As TextBox
+    Friend WithEvents txt_direccion As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents cbx_municipios As ComboBox
     Friend WithEvents cbx_departamentos As ComboBox
     Friend WithEvents cbx_paises As ComboBox
+    Friend WithEvents ErrorProvider1 As ErrorProvider
+    Friend WithEvents check_activo As CheckBox
+    Friend WithEvents btn_actualizar As Button
+    Friend WithEvents btn_nuevo As Button
+    Friend WithEvents btn_guardar As Button
+    Friend WithEvents Label16 As Label
+    Friend WithEvents lbx_usuarios As ListBox
+    Friend WithEvents cb_usuarios As TextBox
+    Friend WithEvents lb_seleccionar_usuarios As Label
+    Friend WithEvents txt_numero_documento As TextBox
 End Class

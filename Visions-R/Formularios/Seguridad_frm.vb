@@ -132,12 +132,13 @@ Public Class Seguridad_frm
         txt_clave_acceso.Text = ""
         txt_usuario_acceso.Text = ""
         dgv_data.CurrentCell = Nothing
-        cb_perfil.SelectedItem = 1
+        cb_perfil.SelectedItem = 0
         btn_actualizar.Visible = False
         btn_guardar.Visible = True
         check_activo.Checked = False
-        lb_proceso.Text = "✎ Gestionar Seguridad"
+        proceso_estado("na", "✎ Gestionar Seguridad")
         lb_proceso.BackColor = Color.DarkGray
+        ErrorProvider1.Clear()
     End Sub
 
     Private Function Validar_controles() As Boolean
@@ -189,7 +190,6 @@ Public Class Seguridad_frm
     End Sub
 
 
-
     Private Sub txt_usuario_acceso_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_usuario_acceso.KeyPress, txt_clave_acceso.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
@@ -211,16 +211,18 @@ Public Class Seguridad_frm
     Dim dt_lista_buscador As New DataTable
     Dim renglon_buscador As DataRow
 
-    Sub lista_usuarios(id As Integer, buscador As String)
+    Sub lista_usuarios(id As Integer, nombre As String, buscador As String)
         If dt_lista_buscador.Columns.Contains("id") Then
             'ha encontrado la columna no se hace nada
         Else
             dt_lista_buscador.Columns.Add("id")
+            dt_lista_buscador.Columns.Add("nombre")
             dt_lista_buscador.Columns.Add("buscador")
         End If
 
         renglon_buscador = dt_lista_buscador.NewRow
         renglon_buscador("id") = id
+        renglon_buscador("nombre") = nombre
         renglon_buscador("buscador") = buscador
 
         dt_lista_buscador.Rows.Add(renglon_buscador)
@@ -240,12 +242,12 @@ Public Class Seguridad_frm
                 lbx_usuarios.Visible = True
 
                 For Each dr As DataRow In filas
-                    lista_usuarios(dr("id").ToString, dr("buscador").ToString)
+                    lista_usuarios(dr("id").ToString, dr("nombre").ToString, dr("buscador").ToString)
                 Next
 
                 With lbx_usuarios
                     .DataSource = dt_lista_buscador
-                    .DisplayMember = "buscador"
+                    .DisplayMember = "nombre"
                     .ValueMember = "id"
                 End With
 
@@ -313,10 +315,10 @@ Public Class Seguridad_frm
     End Sub
 
     Private Sub cb_usuarios_MouseClick(sender As Object, e As MouseEventArgs) Handles cb_usuarios.MouseClick
-        Mostrar_todos_usuarios()
+        Mostrar_usuarios()
     End Sub
 
-    Private Sub Mostrar_todos_usuarios()
+    Private Sub Mostrar_usuarios()
         Dim filas() As DataRow
 
         If cb_usuarios.Text.Length > 0 Then
@@ -332,12 +334,12 @@ Public Class Seguridad_frm
             lbx_usuarios.Visible = True
 
             For Each dr As DataRow In filas
-                lista_usuarios(dr("id").ToString, dr("buscador").ToString)
+                lista_usuarios(dr("id").ToString, dr("nombre").ToString, dr("buscador").ToString)
             Next
 
             With lbx_usuarios
                 .DataSource = dt_lista_buscador
-                .DisplayMember = "buscador"
+                .DisplayMember = "nombre"
                 .ValueMember = "id"
             End With
 
@@ -355,7 +357,7 @@ Public Class Seguridad_frm
     End Sub
 
     Private Sub Label3_MouseClick(sender As Object, e As MouseEventArgs) Handles Label3.MouseClick
-        Mostrar_todos_usuarios()
+        Mostrar_usuarios()
     End Sub
 
 #End Region

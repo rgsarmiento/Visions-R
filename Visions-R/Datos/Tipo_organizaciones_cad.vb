@@ -25,7 +25,7 @@ Public Class Tipo_organizaciones_cad
 
             Dim fila As DataRow = dt.NewRow()
             fila("id") = 0
-            fila("nombre") = "Selccione tipo organizacion ▼"
+            fila("nombre") = "Selccione ▼"
             dt.Rows.InsertAt(fila, 0)
             Return dt
 

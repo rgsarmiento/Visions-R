@@ -24,7 +24,7 @@ Public Class Perfiles_cad
 
             Dim fila As DataRow = dt.NewRow()
             fila("id") = 0
-            fila("nombre") = "Selccione un perfil ▼"
+            fila("nombre") = "Selccione ▼"
             dt.Rows.InsertAt(fila, 0)
             Return dt
 

@@ -25,7 +25,7 @@ Public Class Tipo_regimenes_cad
 
             Dim fila As DataRow = dt.NewRow()
             fila("id") = 0
-            fila("nombre") = "Selccione tipo regimen ▼"
+            fila("nombre") = "Selccione ▼"
             dt.Rows.InsertAt(fila, 0)
             Return dt
 
