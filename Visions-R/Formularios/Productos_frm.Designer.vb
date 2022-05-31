@@ -534,7 +534,7 @@ Partial Class Productos_frm
         Me.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_cerrar.Font = New System.Drawing.Font("Segoe UI Symbol", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btn_cerrar.ForeColor = System.Drawing.Color.White
-        Me.btn_cerrar.Location = New System.Drawing.Point(747, 3)
+        Me.btn_cerrar.Location = New System.Drawing.Point(847, 3)
         Me.btn_cerrar.Name = "btn_cerrar"
         Me.btn_cerrar.Size = New System.Drawing.Size(46, 35)
         Me.btn_cerrar.TabIndex = 10
