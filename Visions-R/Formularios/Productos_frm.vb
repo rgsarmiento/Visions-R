@@ -1,13 +1,27 @@
-﻿Imports Newtonsoft.Json
+﻿Imports System.Runtime.InteropServices
+Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class Productos_frm
 
+#Region "para mover formulario desde el panel titulo"
+    <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
+    Private Shared Sub ReleaseCapture()
+    End Sub
+    <DllImport("user32.DLL", EntryPoint:="SendMessage")>
+    Private Shared Sub SendMessage(ByVal hWnd As System.IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer)
+    End Sub
+
+    Private Sub panel_titulo_MouseDown(sender As Object, e As MouseEventArgs) Handles panel_titulo.MouseDown
+        ReleaseCapture()
+        SendMessage(Me.Handle, &H112, &HF012, 0)
+    End Sub
+#End Region
     Public Sub New()
 
         InitializeComponent()
         dt_lista_impuestos = Impuestos_cad.Listar()
-
+        Me.FormBorderStyle = FormBorderStyle.None
     End Sub
 
     Dim dt_lista_impuestos As DataTable
@@ -363,6 +377,25 @@ Public Class Productos_frm
         txt_precio.Text = liquidar_precio(txt_utilidad_precio.Text.Replace(".", ","))
         Formulas_formatos.Formato_moneda(txt_precio)
     End Sub
+
+
+#End Region
+
+
+#Region "cerrar formulario"
+    Private Sub btn_cerrar_MouseHover(sender As Object, e As EventArgs) Handles btn_cerrar.MouseHover
+        btn_cerrar.BackColor = Color.Tomato
+    End Sub
+
+    Private Sub btn_cerrar_MouseLeave(sender As Object, e As EventArgs) Handles btn_cerrar.MouseLeave
+        btn_cerrar.BackColor = Color.Transparent
+    End Sub
+
+    Private Sub btn_cerrar_Click(sender As Object, e As EventArgs) Handles btn_cerrar.Click
+        Me.Close()
+    End Sub
+
+
 #End Region
 
 End Class

@@ -597,6 +597,7 @@ Partial Class Productos_frm
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Productos_frm"
         Me.Padding = New System.Windows.Forms.Padding(2)
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Productos"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
