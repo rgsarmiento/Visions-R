@@ -1,4 +1,7 @@
 ﻿Public Class Formulas_formatos
+    Public Shared Sub Formato_fecha(txt As TextBox)
+
+    End Sub
 
     Public Shared Sub Formato_moneda(txt As TextBox)
         If txt.Text.Length > 0 Then
