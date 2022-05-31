@@ -63,6 +63,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property add_tax_30px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("add_tax_30px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property broom_30px() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("broom_30px", resourceCulture)
@@ -86,6 +96,26 @@ Namespace My.Resources
         Friend ReadOnly Property message_preview_30px() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("message_preview_30px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property pricing_30px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("pricing_30px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property product_70px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("product_70px", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

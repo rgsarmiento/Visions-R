@@ -132,7 +132,7 @@ Partial Class Usuarios_frm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1089, 515)
+        Me.Panel1.Size = New System.Drawing.Size(1089, 510)
         Me.Panel1.TabIndex = 0
         '
         'txt_numero_documento
@@ -593,7 +593,7 @@ Partial Class Usuarios_frm
         Me.panel_procesos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panel_procesos.Controls.Add(Me.lb_proceso)
         Me.panel_procesos.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panel_procesos.Location = New System.Drawing.Point(0, 490)
+        Me.panel_procesos.Location = New System.Drawing.Point(0, 485)
         Me.panel_procesos.Name = "panel_procesos"
         Me.panel_procesos.Size = New System.Drawing.Size(1089, 25)
         Me.panel_procesos.TabIndex = 5
@@ -742,7 +742,7 @@ Partial Class Usuarios_frm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkSeaGreen
-        Me.ClientSize = New System.Drawing.Size(1093, 519)
+        Me.ClientSize = New System.Drawing.Size(1093, 514)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Usuarios_frm"
         Me.Padding = New System.Windows.Forms.Padding(2)
