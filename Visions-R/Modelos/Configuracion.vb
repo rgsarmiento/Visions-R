@@ -1,9 +1,9 @@
 ﻿Public Class Configuracion
 
-
     Public Class Rootobject
         Public Property db_servidor As Db_Servidor
         Public Property app_settings As App_Settings
+        Public Property app_style As App_Style
     End Class
 
     Public Class Db_Servidor
@@ -41,6 +41,24 @@
         Public Property status As Boolean
         Public Property path As String
     End Class
+
+    Public Class App_Style
+        Public Property form As Form
+        Public Property selection_lists As Selection_Lists
+    End Class
+
+    Public Class Form
+        Public Property red As Integer
+        Public Property green As Integer
+        Public Property blue As Integer
+    End Class
+
+    Public Class Selection_Lists
+        Public Property red As Integer
+        Public Property green As Integer
+        Public Property blue As Integer
+    End Class
+
 
 
 End Class

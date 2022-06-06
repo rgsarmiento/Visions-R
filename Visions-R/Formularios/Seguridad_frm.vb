@@ -15,6 +15,42 @@ Public Class Seguridad_frm
     End Sub
 #End Region
 
+
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim Usuarios_frm As New Productos_frm
+        Usuarios_frm.ShowDialog()
+    End Sub
+
+    Public Sub New()
+        InitializeComponent()
+
+
+        Me.FormBorderStyle = FormBorderStyle.None
+        Me.Padding = New System.Windows.Forms.Padding(2)
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.BackColor = Color.FromArgb(Variables.color_form_r, Variables.color_form_g, Variables.color_form_b)
+
+        cb_usuarios.BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+        Label3.BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+        cb_usuarios.ForeColor = Color.White
+
+        panel_titulo.BackColor = Color.FromArgb(Variables.color_form_r, Variables.color_form_g, Variables.color_form_b)
+
+        Dim usuarios_cad As Usuarios_cad = New Usuarios_cad()
+        dt_usuarios = New DataTable
+        dt_usuarios = Usuarios_cad.Listar("u")
+    End Sub
+
+    Private Sub Seguridad_frm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cargar_data()
+
+        Listar_perfiles()
+
+        nuevo()
+    End Sub
+
+
 #Region "CRUD"
 
 
@@ -78,51 +114,11 @@ Public Class Seguridad_frm
     End Sub
 #End Region
 
-
-
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim Usuarios_frm As New Productos_frm
-        Usuarios_frm.ShowDialog()
-    End Sub
-
-    Public Sub New()
-        InitializeComponent()
-        Me.FormBorderStyle = FormBorderStyle.None
-
-        Dim usuarios_cad As Usuarios_cad = New Usuarios_cad()
-        dt_usuarios = New DataTable
-        dt_usuarios = usuarios_cad.Listar("u")
-
-        Listar_perfiles()
-    End Sub
-
-    Private Sub Seguridad_frm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cargar_data()
-        nuevo()
-    End Sub
-
-
     Private Sub btn_nuevo_Click(sender As Object, e As EventArgs) Handles btn_nuevo.Click
         nuevo()
     End Sub
 
-    Private Sub Listar_perfiles()
-        Try
-            Dim perfiles_cad As Perfiles_cad = New Perfiles_cad()
 
-            With cb_perfil
-                .DataSource = Nothing
-                .DataSource = Perfiles_cad.Listar()
-                .DisplayMember = "nombre"
-                .ValueMember = "id"
-                .DropDownStyle = ComboBoxStyle.DropDown
-                .AutoCompleteMode = AutoCompleteMode.Suggest
-                .AutoCompleteSource = AutoCompleteSource.ListItems
-            End With
-        Catch ex As Exception
-
-        End Try
-    End Sub
 
     Private Sub nuevo()
         cb_usuarios.Text = ""
@@ -206,7 +202,7 @@ Public Class Seguridad_frm
         End If
     End Sub
 
-#Region "listar y seleccionar usuarios"
+#Region "listas y seleccion de usuarios"
     Dim dt_usuarios As DataTable
     Dim dt_lista_buscador As New DataTable
     Dim renglon_buscador As DataRow
@@ -341,6 +337,8 @@ Public Class Seguridad_frm
                 .DataSource = dt_lista_buscador
                 .DisplayMember = "nombre"
                 .ValueMember = "id"
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
             End With
 
             lbx_usuarios.Visible = True
@@ -358,6 +356,28 @@ Public Class Seguridad_frm
 
     Private Sub Label3_MouseClick(sender As Object, e As MouseEventArgs) Handles Label3.MouseClick
         Mostrar_usuarios()
+    End Sub
+
+
+    Private Sub Listar_perfiles()
+        Try
+            Dim perfiles_cad As Perfiles_cad = New Perfiles_cad()
+
+            With cb_perfil
+                .DataSource = Nothing
+                .DataSource = Perfiles_cad.Listar()
+                .DisplayMember = "nombre"
+                .ValueMember = "id"
+                .DropDownStyle = ComboBoxStyle.DropDown
+                .AutoCompleteMode = AutoCompleteMode.Suggest
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
+            End With
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 #End Region
@@ -447,8 +467,6 @@ Public Class Seguridad_frm
         btn_actualizar.Visible = True
         btn_guardar.Visible = False
     End Sub
-
-
 
 
 #End Region

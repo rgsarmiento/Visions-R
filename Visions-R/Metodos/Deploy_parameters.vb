@@ -7,8 +7,13 @@ Public Class Deploy_parameters
     Public Shared jsonString As String = r.ReadToEnd()
 
     Public Shared Function modelo_configuraciones() As Configuracion.Rootobject
-        Dim configuraciones As Configuracion.Rootobject = JsonConvert.DeserializeObject(Of Configuracion.Rootobject)(jsonString)
-        Return configuraciones
+        Try
+            Dim configuraciones As Configuracion.Rootobject = JsonConvert.DeserializeObject(Of Configuracion.Rootobject)(jsonString)
+            Return configuraciones
+        Catch ex As Exception
+
+        End Try
+
     End Function
 
 

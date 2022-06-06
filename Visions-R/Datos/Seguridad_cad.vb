@@ -7,6 +7,8 @@ Public Class Seguridad_cad
         Variables.conexion_acceso = Acceso_Tablas.Validar("seguridad")
     End Sub
 
+#Region "CRUD"
+
     Public Shared Function Guardar(ByVal e As Seguridad_modelo) As Boolean
         Try
             Dim con As Conexion = New Conexion()
@@ -120,6 +122,7 @@ Public Class Seguridad_cad
         End Try
     End Function
 
+#End Region
 
     Public Shared Function Seleccionar() As DataTable
         Try

@@ -24,7 +24,13 @@ Public Class Usuarios_frm
 
     Public Sub New()
         InitializeComponent()
+
         Me.FormBorderStyle = FormBorderStyle.None
+        Me.Padding = New System.Windows.Forms.Padding(2)
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.BackColor = Color.FromArgb(Variables.color_form_r, Variables.color_form_g, Variables.color_form_b)
+
+        panel_titulo.BackColor = Color.FromArgb(Variables.color_form_r, Variables.color_form_g, Variables.color_form_b)
     End Sub
 
     Private Sub Usuarios_frm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -53,6 +59,9 @@ Public Class Usuarios_frm
                 .DropDownStyle = ComboBoxStyle.DropDown
                 .AutoCompleteMode = AutoCompleteMode.Suggest
                 .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
             End With
         Catch ex As Exception
 
@@ -70,6 +79,9 @@ Public Class Usuarios_frm
                 .DropDownStyle = ComboBoxStyle.DropDown
                 .AutoCompleteMode = AutoCompleteMode.Suggest
                 .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
             End With
         Catch ex As Exception
 
@@ -87,6 +99,9 @@ Public Class Usuarios_frm
                 .DropDownStyle = ComboBoxStyle.DropDown
                 .AutoCompleteMode = AutoCompleteMode.Suggest
                 .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
             End With
         Catch ex As Exception
 
@@ -104,6 +119,9 @@ Public Class Usuarios_frm
                 .DropDownStyle = ComboBoxStyle.DropDown
                 .AutoCompleteMode = AutoCompleteMode.Suggest
                 .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
             End With
         Catch ex As Exception
 
@@ -121,6 +139,9 @@ Public Class Usuarios_frm
                 .DropDownStyle = ComboBoxStyle.DropDown
                 .AutoCompleteMode = AutoCompleteMode.Suggest
                 .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
             End With
         Catch ex As Exception
 
@@ -142,6 +163,9 @@ Public Class Usuarios_frm
                     .DropDownStyle = ComboBoxStyle.DropDown
                     .AutoCompleteMode = AutoCompleteMode.Suggest
                     .AutoCompleteSource = AutoCompleteSource.ListItems
+                    .FlatStyle = FlatStyle.Standard
+                    .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                    .ForeColor = Color.White
                 End With
             End If
 
@@ -165,6 +189,9 @@ Public Class Usuarios_frm
                     .DropDownStyle = ComboBoxStyle.DropDown
                     .AutoCompleteMode = AutoCompleteMode.Suggest
                     .AutoCompleteSource = AutoCompleteSource.ListItems
+                    .FlatStyle = FlatStyle.Standard
+                    .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                    .ForeColor = Color.White
                 End With
             End If
 

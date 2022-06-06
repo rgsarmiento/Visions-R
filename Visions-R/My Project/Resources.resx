@@ -121,6 +121,9 @@
   <data name="product_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\product_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="add_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -129,6 +132,9 @@
   </data>
   <data name="message_preview_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\message_preview_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pricing_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pricing_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="update_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,7 +148,7 @@
   <data name="broom_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\broom_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pricing_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pricing_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="add_new_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_new_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
