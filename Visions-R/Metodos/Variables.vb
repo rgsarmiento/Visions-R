@@ -5,6 +5,9 @@
 
 
     Public Shared costo_con_iva As Integer = 0
+    Public Shared precio_x_seleccion As Boolean = False
+    Public Shared id_precio_seleccionado As Integer = 0
+
 
 #Region "colores de la aplicacion"
     Public Shared Function color_cbx_r() As Integer

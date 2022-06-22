@@ -119,7 +119,6 @@ Public Class Seguridad_frm
     End Sub
 
 
-
     Private Sub nuevo()
         cb_usuarios.Text = ""
         id_usuario = 0

@@ -20,6 +20,8 @@ Public Class Productos_frm
     Public Sub New()
         InitializeComponent()
         dt_lista_impuestos = Impuestos_cad.Listar()
+        dt_productos = Productos_cad.Lista_completa()
+        lbl_total_productos.Text = $"{dt_productos.Rows.Count - 1} Encontrados"
 
         Me.FormBorderStyle = FormBorderStyle.None
         Me.Padding = New System.Windows.Forms.Padding(2)
@@ -29,9 +31,17 @@ Public Class Productos_frm
         panel_titulo.BackColor = Color.FromArgb(Variables.color_form_r, Variables.color_form_g, Variables.color_form_b)
     End Sub
 
+    Dim dt_productos As DataTable
+
     Dim dt_lista_impuestos As DataTable
 
+    Dim id_producto As Integer = 0
+
     Private Sub Productos_frm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Listar_productos_codigo()
+        Listar_productos_nombre()
+
         Listar_marcas()
         Listar_grupos()
         Listar_tipo_unidades_medida()
@@ -39,10 +49,54 @@ Public Class Productos_frm
         Listar_tipo_impuestos()
         Listar_tipo_precios()
         Listar_condiciones()
+
+        nuevo()
+
     End Sub
 
 
 #Region "Listas de seleccion"
+
+    Private Sub Listar_productos_codigo()
+        Try
+
+            With cbx_codigo
+                .DataSource = Nothing
+                .DataSource = dt_productos
+                .DisplayMember = "codigo"
+                .ValueMember = "id"
+                .DropDownStyle = ComboBoxStyle.DropDown
+                .AutoCompleteMode = AutoCompleteMode.Suggest
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
+            End With
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Listar_productos_nombre()
+        Try
+
+            With cbx_nombre
+                .DataSource = Nothing
+                .DataSource = dt_productos
+                .DisplayMember = "nombre"
+                .ValueMember = "id"
+                .DropDownStyle = ComboBoxStyle.DropDown
+                .AutoCompleteMode = AutoCompleteMode.Suggest
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+                .FlatStyle = FlatStyle.Standard
+                .BackColor = Color.FromArgb(Variables.color_cbx_r, Variables.color_cbx_g, Variables.color_cbx_b)
+                .ForeColor = Color.White
+            End With
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
     Private Sub Listar_tipo_impuestos()
         Try
 
@@ -274,22 +328,6 @@ Public Class Productos_frm
 
     End Sub
 
-    Private Function serializar_objeto_impuesto() As String
-
-        Dim impuestos_json As New List(Of impuestos)
-
-        For Each row As DataRow In dt_impuestos.Rows
-            impuestos_json.Add(New impuestos() With {
-            .id = row("id"),
-            .id_tipo_impuesto = row("id_tipo_impuesto"),
-            .porcentaje = row("Porcentaje")
-                       })
-        Next
-
-        Return JsonConvert.SerializeObject(impuestos_json)
-
-    End Function
-
     Private Sub dgv_impuestos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_impuestos.CellDoubleClick
         Try
             Dim fila As Integer = e.RowIndex
@@ -302,25 +340,6 @@ Public Class Productos_frm
     End Sub
 
 #End Region
-
-
-    Private Function de_objeto_json_impuestos_a_tabla(impuestos_str) As DataTable
-
-        Dim impuestos_array As JArray = JArray.Parse(impuestos_str)
-
-        For Each jsonChildren As JObject In impuestos_array.Children(Of JObject)()
-            Dim id As Integer = jsonChildren("id")
-            Dim id_tipo_impuesto As Integer = jsonChildren("id_tipo_impuesto")
-            Dim impuesto_nombre As Integer = jsonChildren("impuesto")
-            Dim porcentaje As Integer = jsonChildren("porcentaje")
-
-            Adicionar_impuesto_dt(id, id_tipo_impuesto, impuesto_nombre, porcentaje)
-            crear_tabla_impuestos()
-
-        Next
-        Return Nothing
-    End Function
-
 
 #Region "condiciones"
     Dim dt_condiciones As New DataTable
@@ -422,7 +441,6 @@ Public Class Productos_frm
     End Sub
 
 #End Region
-
 
 #Region "Costos"
     Private Sub txt_costo_Leave(sender As Object, e As EventArgs) Handles txt_costo.Leave
@@ -625,7 +643,6 @@ Public Class Productos_frm
 
 #End Region
 
-
 #Region "cerrar formulario"
     Private Sub btn_cerrar_MouseHover(sender As Object, e As EventArgs) Handles btn_cerrar.MouseHover
         btn_cerrar.BackColor = Color.Tomato
@@ -644,6 +661,79 @@ Public Class Productos_frm
 
 #Region "Procesos"
 
+    Private Function Validar_controles(proceso As String) As Boolean
+        Dim mensaje As String = ""
+        ErrorProvider1.Clear()
+
+        Select Case proceso
+            Case "guardar"
+
+                If cbx_codigo.Text.Length = 0 Then
+                    mensaje = "☠ Debe seleccionar o escriiibir un codogo de producto"
+                    ErrorProvider1.SetError(cbx_marca, mensaje)
+                    proceso_estado("error", mensaje)
+                    Return False
+                End If
+
+                If cbx_nombre.Text.Length = 0 Then
+                    mensaje = "☠ Debe seleccionar o escriiibir un nombre de producto"
+                    ErrorProvider1.SetError(cbx_marca, mensaje)
+                    proceso_estado("error", mensaje)
+                    Return False
+                End If
+
+            Case "actualizar"
+
+                If cbx_codigo.SelectedValue <= 0 Then
+                    mensaje = "☠ La marca es requerida"
+                    ErrorProvider1.SetError(cbx_marca, mensaje)
+                    proceso_estado("error", mensaje)
+                    Return False
+                End If
+
+        End Select
+
+        If cbx_marca.SelectedValue <= 0 Then
+            mensaje = "☠ La marca es requerida"
+            ErrorProvider1.SetError(cbx_marca, mensaje)
+            proceso_estado("error", mensaje)
+            Return False
+        End If
+
+        If cbx_subgrupo.SelectedValue <= 0 Then
+            mensaje = "☠ El grupo es requerido"
+            ErrorProvider1.SetError(cbx_subgrupo, mensaje)
+            proceso_estado("error", mensaje)
+            Return False
+        End If
+
+        If cbx_presentacion.SelectedValue <= 0 Then
+            mensaje = "☠ La presentacion es requerida"
+            ErrorProvider1.SetError(cbx_presentacion, mensaje)
+            proceso_estado("error", mensaje)
+            Return False
+        End If
+
+        If existe_precio_defecto() = False Then
+            mensaje = "☠ Debe existir un precio por defecto (1) con un valor"
+            ErrorProvider1.SetError(cbx_precios, mensaje)
+            proceso_estado("error", mensaje)
+            Return False
+        End If
+
+        Return True
+    End Function
+
+    Private Function existe_precio_defecto() As Boolean
+        For Each row As DataRow In dt_precios.Rows
+            If CInt(row("precio_defecto")) = 1 Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
+
     Private Sub proceso_estado(tipo, mensaje)
         lb_proceso.Text = mensaje
         Select Case tipo
@@ -656,7 +746,330 @@ Public Class Productos_frm
         End Select
     End Sub
 
+    Private Sub nuevo()
+
+        id_producto = 0
+
+        cbx_codigo.SelectedValue = 0
+        cbx_nombre.SelectedValue = 0
+
+        cbx_marca.SelectedValue = 0
+        cbx_subgrupo.SelectedValue = 0
+        cbx_presentacion.SelectedValue = 0
+        cbx_condiciones.SelectedValue = 0
+        cbx_precios.SelectedValue = 0
+        cbx_impuestos.SelectedValue = 0
+
+        txt_codigo_interno.Text = ""
+        txt_embalaje.Text = "1"
+        txt_peso.Text = "0"
+        txt_existencias_maximas.Text = "0"
+        txt_existencias_minimas.Text = "0"
+
+        txt_costo.Text = "0"
+        txt_costo_iva.Text = "0"
+        txt_utilidad_precio.Text = ""
+        txt_precio.Text = ""
+
+        txt_notas.Text = "Notas"
+
+        Try
+            dt_impuestos.Clear()
+            dt_precios.Clear()
+            dt_condiciones.Clear()
+
+            dgv_impuestos.DataSource = Nothing
+            dgv_precios.DataSource = Nothing
+            dgv_condiciones.DataSource = Nothing
+
+            dgv_impuestos.Rows.Clear()
+            dgv_precios.Rows.Clear()
+            dgv_condiciones.Rows.Clear()
+
+        Catch ex As Exception
+        End Try
+
+        dtp_actualizado.Value = Now
+        dtp_compra.Value = Now
+        dtp_venta.Value = Now
+
+        btn_actualizar.Enabled = False
+        btn_guardar.Enabled = True
+
+
+        proceso_estado("na", "✎ Gestionar Productos")
+        lb_proceso.BackColor = Color.DarkGray
+        ErrorProvider1.Clear()
+    End Sub
+
+    Private Sub btn_nuevo_Click(sender As Object, e As EventArgs) Handles btn_nuevo.Click
+        nuevo()
+    End Sub
+
 #End Region
+
+
+#Region "CRUD"
+
+    Private Sub btn_guardar_Click(sender As Object, e As EventArgs) Handles btn_guardar.Click
+        Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
+        If Validar_controles("guardar") Then
+
+            Dim obj As Producto_modelo = New Producto_modelo()
+
+            obj.codigo = cbx_codigo.Text
+            obj.codigo_interno = txt_codigo_interno.Text
+            obj.nombre = cbx_nombre.Text
+            obj.id_marca = cbx_marca.SelectedValue
+            obj.id_subgrupo = cbx_subgrupo.SelectedValue
+            obj.id_tipo_unidades_medida = cbx_presentacion.SelectedValue
+            obj.embalaje = txt_embalaje.Text
+            obj.existencias = 0
+            obj.existencias_minimas = txt_existencias_minimas.Text
+            obj.existencias_maximas = txt_existencias_maximas.Text
+            obj.peso_gramos = txt_peso.Text
+            obj.impuestos = de_tabla_impuestos_a_objeto_json()
+            obj.precio_costo = txt_costo.Text
+            obj.precio_costo_iva = txt_costo_iva.Text
+            obj.precios_venta = de_tabla_precios_a_objeto_json()
+            obj.condiciones = de_tabla_condiciones_a_objeto_json()
+            obj.id_estado = 1
+            obj.notas = txt_notas.Text
+
+            Dim Productos_cad As Productos_cad = New Productos_cad()
+
+            If Productos_cad.Guardar(obj) Then
+                nuevo()
+                proceso_estado("ok", $"☑ producto {cbx_codigo.Text} - {cbx_nombre.Text} creado correctamente")
+            Else
+                proceso_estado("error", $"☠ No se pudo completar el proceso en Guardar")
+            End If
+        End If
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+    End Sub
+
+    Private Sub btn_actualizar_Click(sender As Object, e As EventArgs) Handles btn_actualizar.Click
+        Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
+        If Validar_controles("actualizar") Then
+            Dim obj As Producto_modelo = New Producto_modelo()
+
+            obj.id = id_producto
+            obj.codigo = cbx_codigo.Text
+            obj.codigo_interno = txt_codigo_interno.Text
+            obj.nombre = cbx_nombre.Text
+            obj.id_marca = cbx_marca.SelectedValue
+            obj.id_subgrupo = cbx_subgrupo.SelectedValue
+            obj.id_tipo_unidades_medida = cbx_presentacion.SelectedValue
+            obj.embalaje = txt_embalaje.Text
+            obj.existencias = 0
+            obj.existencias_minimas = txt_existencias_minimas.Text
+            obj.existencias_maximas = txt_existencias_maximas.Text
+            obj.peso_gramos = txt_peso.Text
+            obj.impuestos = de_tabla_impuestos_a_objeto_json()
+            obj.precio_costo = txt_costo.Text
+            obj.precio_costo_iva = txt_costo_iva.Text
+            obj.precios_venta = de_tabla_precios_a_objeto_json()
+            obj.condiciones = de_tabla_condiciones_a_objeto_json()
+            obj.id_estado = 1
+            obj.notas = txt_notas.Text
+
+            Dim Productos_cad As Productos_cad = New Productos_cad()
+
+            If Productos_cad.Actualizar(obj) Then
+                nuevo()
+                proceso_estado("ok", $"☑ producto {cbx_codigo.Text} - {cbx_nombre.Text} actualizado correctamente")
+            Else
+                proceso_estado("error", $"☠ No se pudo completar el proceso en Actualizar")
+            End If
+        End If
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+    End Sub
+
+    Private Sub cbx_codigo_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbx_codigo.SelectionChangeCommitted, cbx_nombre.SelectionChangeCommitted
+        Dim cbx = DirectCast(sender, ComboBox)
+        Dim id As Integer = cbx.SelectedIndex
+        If cbx.SelectedIndex > 0 Then
+            nuevo()
+            selecionar_datos_producto(id)
+        End If
+    End Sub
+
+    Private Sub selecionar_datos_producto(indice As Integer)
+        Dim row = dt_productos(indice)
+
+        id_producto = row("id")
+
+        cbx_codigo.Text = row("codigo")
+        cbx_nombre.Text = row("nombre")
+        cbx_marca.SelectedValue = row("id_marca")
+        cbx_subgrupo.SelectedValue = row("id_subgrupo")
+        cbx_presentacion.SelectedValue = row("id_tipo_unidades_medida")
+
+        txt_codigo_interno.Text = row("codigo_interno")
+        txt_embalaje.Text = row("embalaje")
+        txt_peso.Text = row("peso_gramos")
+        txt_existencias_minimas.Text = row("existencias_minimas")
+        txt_existencias_maximas.Text = row("existencias_maximas")
+        txt_notas.Text = row("notas")
+
+        de_objeto_json_impuestos_a_tabla(row("impuestos"))
+        de_objeto_json_precios_a_tabla(row("precios_venta"))
+        de_objeto_json_condiciones_a_tabla(row("condiciones"))
+
+        txt_costo.Text = row("precio_costo")
+        Formulas_formatos.Formato_moneda(txt_costo)
+
+        txt_costo_iva.Text = row("precio_costo_iva")
+        Formulas_formatos.Formato_moneda(txt_costo_iva)
+
+        dtp_actualizado.Value = row("fecha_actualizado")
+        dtp_compra.Value = row("fecha_compra")
+        dtp_venta.Value = row("fecha_venta")
+
+        btn_guardar.Enabled = False
+        btn_actualizar.Enabled = True
+
+    End Sub
+#End Region
+
+
+#Region "de tablas a objetos json"
+    Private Function de_tabla_impuestos_a_objeto_json() As String
+        Dim json As New List(Of impuestos_obj)
+        For Each row As DataRow In dt_impuestos.Rows
+            json.Add(New impuestos_obj() With {
+            .id = row("id"),
+            .id_tipo_impuesto = row("id_tipo_impuesto"),
+            .porcentaje = row("Porcentaje")
+                       })
+        Next
+        Return JsonConvert.SerializeObject(json)
+    End Function
+
+    Private Function de_tabla_precios_a_objeto_json() As String
+        Dim json As New List(Of Precios_obj)
+        For Each row As DataRow In dt_precios.Rows
+            json.Add(New Precios_obj() With {
+            .id = row("id"),
+            .precio_defecto = row("precio_defecto"),
+            .nombre = row("nombre"),
+            .utilidad = row("utilidad"),
+            .valor = row("valor")
+                       })
+        Next
+        Return JsonConvert.SerializeObject(json)
+    End Function
+
+    Private Function de_tabla_condiciones_a_objeto_json() As String
+        Dim json As New List(Of Condiciones_obj)
+        For Each row As DataRow In dt_condiciones.Rows
+            json.Add(New Condiciones_obj() With {
+            .id = row("id"),
+            .nombre = row("nombre")
+                       })
+        Next
+        Return JsonConvert.SerializeObject(json)
+    End Function
+#End Region
+
+
+#Region "de objetos json a tablas"
+    Private Function de_objeto_json_impuestos_a_tabla(impuestos_str) As DataTable
+
+        Dim impuestos_array As JArray = JArray.Parse(impuestos_str)
+
+        For Each jsonChildren As JObject In impuestos_array.Children(Of JObject)()
+            Dim id As Integer = jsonChildren("id")
+            Dim id_tipo_impuesto As Integer = jsonChildren("id_tipo_impuesto")
+
+            Dim row_impuesto = Filtrar_datos_impuestos(id)
+            Dim impuesto_nombre As String = row_impuesto("nombre")
+
+            Dim porcentaje As String = jsonChildren("porcentaje")
+
+            If Existe_impuesto_producto(id) = False Then
+                Adicionar_impuesto_dt(id, id_tipo_impuesto, impuesto_nombre, porcentaje)
+                crear_tabla_impuestos()
+            End If
+
+        Next
+        Return Nothing
+    End Function
+
+    Private Sub de_objeto_json_precios_a_tabla(str_json)
+
+        Dim array As JArray = JArray.Parse(str_json)
+
+        For Each jsonChildren As JObject In array.Children(Of JObject)()
+            Dim id As Integer = jsonChildren("id")
+            Dim precio_defecto As Integer = jsonChildren("precio_defecto")
+            Dim nombre As String = jsonChildren("nombre")
+            Dim utilidad As Decimal = jsonChildren("utilidad")
+            Dim valor As String = CStr(jsonChildren("valor"))
+
+            If Existe_precio_producto(id) = False Then
+                Adicionar_precio_dt(id, precio_defecto, nombre, utilidad, valor)
+                crear_tabla_precios()
+            End If
+
+        Next
+
+    End Sub
+
+    Private Function de_objeto_json_condiciones_a_tabla(str_json) As DataTable
+
+        Dim array As JArray = JArray.Parse(str_json)
+
+        For Each jsonChildren As JObject In array.Children(Of JObject)()
+            Dim id As Integer = jsonChildren("id")
+            Dim nombre As String = jsonChildren("nombre")
+
+            If Existe_condicion(id) = False Then
+                Adicionar_condicion_dt(id, nombre)
+                crear_tabla_condiciones()
+            End If
+
+        Next
+        Return Nothing
+    End Function
+
+
+#End Region
+
+
+#Region "Eventos del teclado"
+    Private Sub txt_codigo_interno_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_codigo_interno.KeyPress, txt_peso.KeyPress, txt_embalaje.KeyPress, txt_existencias_minimas.KeyPress, txt_existencias_maximas.KeyPress,
+            txt_costo.KeyPress, txt_costo_iva.KeyPress, txt_utilidad_precio.KeyPress, txt_precio.KeyPress, txt_notas.KeyPress
+
+        Dim txt = DirectCast(sender, TextBox)
+
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            SendKeys.Send("{TAB}")
+            e.Handled = True
+        End If
+
+        'validar q se ingresen solo numeros
+        If txt.Name = "txt_peso" Or txt.Name = "txt_embalaje" Or txt.Name = "txt_existencias_maximas" Or
+            txt.Name = "txt_existencias_minimas" Or txt.Name = "txt_costo" Or txt.Name = "txt_utilidad_precio" Or txt.Name = "txt_precio" Then
+            e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        End If
+
+    End Sub
+
+    Private Sub cbx_codigo_KeyDown(sender As Object, e As KeyEventArgs) Handles cbx_codigo.KeyDown, cbx_condiciones.KeyDown, cbx_impuestos.KeyDown, cbx_marca.KeyDown,
+            cbx_nombre.KeyDown, cbx_precios.KeyDown, cbx_presentacion.KeyDown, cbx_subgrupo.KeyDown
+
+        Dim a As String = e.KeyCode
+        If a = "13" Then
+            SendKeys.Send("{TAB}")
+            e.Handled = True
+        End If
+    End Sub
+
+#End Region
+
+
+
 
 
 

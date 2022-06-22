@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 
 #Region "Para uso interno de la aplicacion"
-Public Class impuestos
+Public Class impuestos_obj
     <Display(Description:="id tabla impuestos")>
     Public Property id As Integer
 
@@ -17,7 +17,7 @@ End Class
 
 
 #Region "Para usar con DINA"
-Public Class tax_totals
+Public Class tax_totals_obj
     <Display(Description:="Tipo de impuesto tabla taxes.")>
     Public Property tax_id As Integer = 1
 

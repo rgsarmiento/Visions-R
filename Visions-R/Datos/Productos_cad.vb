@@ -152,4 +152,108 @@ Public Class Productos_cad
 #End Region
 
 
+    Public Shared Function Lista_completa() As DataTable
+        Try
+
+            Dim con As Conexion = New Conexion()
+            Dim dt As DataTable = New DataTable
+
+            Dim query As String = "SELECT id, codigo, codigo_interno, nombre, id_marca, id_subgrupo, id_tipo_unidades_medida, embalaje, existencias, existencias_minimas, existencias_maximas, peso_gramos, impuestos, precio_costo, precio_costo_iva, 
+                                    precios_venta, condiciones, id_estado, notas, fecha_venta, fecha_compra, fecha_actualizado, fecha_creado
+                                    FROM productos"
+
+            Dim comando As SqlCommand = New SqlCommand(query, con.conectar)
+
+            Dim dr As SqlDataReader = comando.ExecuteReader(CommandBehavior.CloseConnection)
+            dt.Load(dr)
+            con.desconectar()
+
+            Dim fila As DataRow = dt.NewRow()
+            fila("id") = 0
+            fila("nombre") = ""
+            fila("codigo") = ""
+            fila("codigo_interno") = ""
+            fila("impuestos") = ""
+            fila("precios_venta") = ""
+            fila("condiciones") = ""
+            fila("id_marca") = 0
+            fila("id_subgrupo") = 0
+            fila("id_tipo_unidades_medida") = 0
+            fila("embalaje") = 0
+            fila("existencias") = 0
+            fila("existencias_minimas") = 0
+            fila("existencias_maximas") = 0
+            fila("peso_gramos") = 0
+            fila("precio_costo") = 0
+            fila("precio_costo_iva") = 0
+            fila("id_estado") = 0
+            fila("notas") = ""
+            fila("fecha_venta") = Now
+            fila("fecha_compra") = Now
+            fila("fecha_actualizado") = Now
+            fila("fecha_creado") = Now
+
+            dt.Rows.InsertAt(fila, 0)
+
+            Return dt
+
+        Catch ex As Exception
+            Logger.Registro("Productos_cad", "Lista_completa", ex.ToString)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Shared Function buscar_producto(codigo As String) As Producto_modelo
+        Try
+
+            Dim con As Conexion = New Conexion()
+            Dim dt As DataTable = New DataTable
+
+            Dim obj As Producto_modelo = New Producto_modelo()
+
+            Dim query As String = "SELECT id, codigo, codigo_interno, nombre, id_marca, id_subgrupo, id_tipo_unidades_medida, embalaje, existencias, existencias_minimas, existencias_maximas, peso_gramos, impuestos, precio_costo, precio_costo_iva, 
+                                    precios_venta, condiciones, id_estado, notas, fecha_venta, fecha_compra, fecha_actualizado, fecha_creado
+                                    FROM productos
+                                    WHERE (codigo = @codigo) OR (codigo_interno = @codigo)"
+
+            Dim comando As SqlCommand = New SqlCommand(query, con.conectar)
+
+            comando.Parameters.AddWithValue("@codigo", codigo)
+
+            Dim sdr As SqlDataReader = comando.ExecuteReader()
+            While sdr.Read()
+                obj.codigo = sdr("codigo").ToString()
+                obj.codigo_interno = sdr("codigo_interno").ToString()
+                obj.nombre = sdr("nombre").ToString()
+                obj.id_marca = sdr("id_marca").ToString()
+                obj.id_subgrupo = sdr("id_subgrupo").ToString()
+                obj.id_tipo_unidades_medida = sdr("id_tipo_unidades_medida").ToString()
+                obj.embalaje = sdr("embalaje").ToString()
+                obj.existencias = sdr("existencias").ToString()
+                obj.existencias_minimas = sdr("existencias_minimas").ToString()
+                obj.existencias_maximas = sdr("existencias_maximas").ToString()
+                obj.peso_gramos = sdr("peso_gramos").ToString()
+                obj.impuestos = sdr("impuestos").ToString()
+                obj.precio_costo = sdr("precio_costo").ToString()
+                obj.precio_costo_iva = sdr("precio_costo_iva").ToString()
+                obj.precios_venta = sdr("precios_venta").ToString()
+                obj.condiciones = sdr("condiciones").ToString()
+                obj.id_estado = sdr("id_estado").ToString()
+                obj.notas = sdr("notas").ToString()
+                obj.fecha_venta = sdr("fecha_venta").ToString()
+                obj.fecha_compra = sdr("fecha_compra").ToString()
+                obj.fecha_actualizado = sdr("fecha_actualizado").ToString()
+                obj.fecha_creado = sdr("fecha_creado").ToString()
+            End While
+
+            con.desconectar()
+
+            Return obj
+
+        Catch ex As Exception
+            Logger.Registro("Productos_cad", "buscar_producto", ex.ToString)
+            Return Nothing
+        End Try
+    End Function
+
 End Class

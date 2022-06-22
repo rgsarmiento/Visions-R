@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Visions_R</RootNamespace>
-    <StartupObject>Visions_R.Seguridad_frm</StartupObject>
+    <StartupObject>Visions_R.Ventas_frm</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
